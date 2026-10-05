@@ -1,0 +1,21 @@
+[Unit]
+Description=Golbert Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=golbertctl
+Group=golbertctl
+WorkingDirectory=/opt/golbert-control
+EnvironmentFile=/etc/golbert-control.env
+ExecStart=/opt/golbert-control/venv/bin/python /opt/golbert-control/bot.py
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
